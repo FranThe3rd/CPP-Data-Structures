@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -18,38 +19,32 @@ using namespace std;
  * Space Complexity: O(1)
  */
 
-class Solution {
-  public:
-    int minEatingSpeed(vector<int>& piles, int h) {
-      int l = 1;
-      int r = *max_element(piles.begin(), piles.end());
-      int res = r;
 
-      while (l <= r) {
-        int k = l + (r - l) / 2;
+using namespace std;
 
-        long long hours = 0;
-
-        for (int p : piles) {
-          hours += (p + k - 1) / k;
-        }
-
-        if (hours <= h) {
-          res = k;
-          r = k - 1;
-        } else {
-          l = k + 1;
-        }
-      }
-
-      return res;
+int minEatingSpeed(vector<int>& piles, int h) {
+  int l = 1;
+  int r = *max_element(piles.begin(), piles.end());
+  int res = r;
+  while (l <= r) {
+    int k = (l + r) / 2;
+    int time = 0;
+    for (int p : piles) {
+      time += ceil((float)p / k);
     }
-};
+    if (time <= h) {
+      res = min(res, k);
+      r = k - 1;
+    } else {
+      l = k + 1;
+    }
+  }
+  return res;
+}
 
 int main() {
-  Solution sol;
   vector<int> piles = {3, 6, 7, 11};
-    int h = 8;
-    cout << sol.minEatingSpeed(piles, h << endl);
-    return 0;
+  int h = 8;
+  cout << minEatingSpeed(piles, h) << endl;
+  return 0;
 }
