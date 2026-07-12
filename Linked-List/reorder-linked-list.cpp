@@ -34,7 +34,7 @@ void reorderList(ListNode* head) {
     prev = second;
     second = tmp;
   }
-  // Now Idk 
+  // Now set them to the right order 
   ListNode* first = head;
   second = prev;
   while (second != nullptr) {
