@@ -19,6 +19,8 @@
  *
  * Once curr becomes nullptr, we have processed every node. At that point,
  * prev points to the new head of the reversed linked list, so we return prev.
+ *
+ * 1 - 2 - 3 - 4 - 5
  */
 
 ListNode* reverseList(ListNode* head) {
