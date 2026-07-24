@@ -31,7 +31,7 @@ public:
         TrieNode* cur = root;
 
         for (char c : word) {
-            if (cur->children.find(c) == cur->children.end()) {
+            if (cur->children.find(c) == cur->children.end()) { 
                 cur->children[c] = new TrieNode();
             }
             cur = cur->children[c];
@@ -44,9 +44,7 @@ public:
         if (i == word.size()) {
             return root->endOfWord;
         }
-
         char c = word[i];
-
         if (c == '.') {
             for (auto& [ch, node] : root->children) {
                 if (dfs(node, word, i + 1)) {
@@ -58,7 +56,6 @@ public:
                 return dfs(root->children[c], word, i + 1);
             }
         }
-
         return false;
     }
 
