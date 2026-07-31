@@ -51,6 +51,7 @@ std::vector<std::vector<int>> combinationSum2(const std::vector<int>& candidates
 int main()
 {
   std::vector<int> candidates = {10, 1, 2, 7, 6, 1, 5};
+  
   std::sort(candidates.begin(), candidates.end());
   int target = 8;
   std::vector<std::vector<int>> result = combinationSum2(candidates, target);
