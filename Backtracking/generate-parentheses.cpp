@@ -3,11 +3,24 @@
 #include <string>
 
 /*
- * We want to generate all combinatiions of a well formed parantheses.
- * So whenever we have a variable like n = 3, that means
- * we will have 3 pairs of parentheses. Which means we will
- * have 3 open parantheses, and 3 closes or ((())).
- *
+ * We need to generate every valid combination of n pairs of parentheses.
+ * Example:
+ * n = 3
+ * We must use:
+ *   3 '(' characters
+ *   3 ')' characters
+ * Since each pair contributes two characters, every completed answer
+ * will have a length of 2 * n (6 characters when n = 3).
+ * We build one string one character at a time using backtracking.
+ * At every step we have two possible choices:
+ * 1. Add '('
+ *    We can only do this if we have used fewer than n opening
+ *    parentheses.
+ * 2. Add ')'
+ *    We can only do this if there are more '(' than ')' already
+ *    in the current string. Otherwise the string would become invalid.
+ * Whenever the current string reaches a length of 2 * n, we know
+ * we've used all parentheses, so we save that completed string.
  */
 
 class Solution {
