@@ -1,8 +1,7 @@
 #include <vector>
 using namespace std;
 /*
-    We solve this using backtracking (DFS). The idea is to try every cell on the
-    board as a possible starting point for the word. From each cell, we recursively
+    We solve this using backtracking (DFS). The idea is to try every cell on the board as a possible starting point for the word. From each cell, we recursively
     explore the four directions (up, down, left, and right), checking whether each
     character matches the next character in the word. Since a cell cannot be reused
     in the same path, we temporarily replace its value with '#' to mark it as
@@ -15,7 +14,7 @@ using namespace std;
 
 class Solution {
 public:
-    bool exist(vector<vector<char>>& board, string word) {
+   bool wordSearch(vector<vector<char>>& board, string word) {
         int ROWS = board.size();
         int COLS = board[0].size();
 
