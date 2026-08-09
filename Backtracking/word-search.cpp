@@ -11,10 +11,9 @@ using namespace std;
 */
 
 
-
 class Solution {
 public:
-   bool wordSearch(vector<vector<char>>& board, string word) {
+    bool wordSearch(vector<vector<char> > &board, string word) {
         int ROWS = board.size();
         int COLS = board[0].size();
 
@@ -30,7 +29,7 @@ public:
     }
 
 private:
-    bool dfs(vector<vector<char>>& board, string& word, int r, int c, int i) {
+    bool dfs(vector<vector<char> > &board, string &word, int r, int c, int i) {
         if (i == word.size()) {
             return true;
         }
@@ -39,18 +38,18 @@ private:
             r >= board.size() || c >= board[0].size() ||
             board[r][c] != word[i]) {
             return false;
-            }
+        }
 
         char temp = board[r][c];
-        board[r][c] = '#';   // mark visited
+        board[r][c] = '#'; // mark visited
 
         bool found =
-            dfs(board, word, r + 1, c, i + 1) ||
-            dfs(board, word, r - 1, c, i + 1) ||
-            dfs(board, word, r, c + 1, i + 1) ||
-            dfs(board, word, r, c - 1, i + 1);
+                dfs(board, word, r + 1, c, i + 1) || // Down
+                dfs(board, word, r - 1, c, i + 1) || // Up
+                dfs(board, word, r, c + 1, i + 1) || // Right
+                dfs(board, word, r, c - 1, i + 1); // Left
 
-        board[r][c] = temp;  // restore
+        board[r][c] = temp; // restore
 
         return found;
     }
